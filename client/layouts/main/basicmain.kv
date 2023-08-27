@@ -1,0 +1,64 @@
+<Button>:
+    font_size: 20
+    color: 1,1,1,1
+    size_hint: 0.5,0.5
+    height: 30
+
+
+<TextInput>:
+    multiline: False
+    height: 30
+    size_hint_x: 1
+    size_hint_y: None
+
+<Label>:
+    height: 30
+
+<MainScreen>:
+    BoxLayout:
+        orientation: 'horizontal'
+        canvas.before:
+            Color:
+                rgba: 0.7, 0.7, 0.7, 1
+            Line:    # --- adds a border --- #
+                width: 1
+                rectangle: self.x, self.y, self.width, self.height
+        
+        BoxLayout:
+            orientation: 'vertical'
+            canvas.before:
+                Color:
+                    rgba: 0.8, 0.8, 0.8, 1 
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+            size_hint_x: 0.3
+
+            Button:
+                text: 'Inicio'
+                size_hint_x: 1
+                size_hint_y: 10
+                on_press: root.switch_content('Inicio')
+            
+            Button:
+                text: 'Nuevas conexiones'
+                size_hint_x: 1
+                size_hint_y: 10
+                on_press: root.switch_content('Reverse Connections')
+            
+            Button:
+                text: 'Docker'
+                size_hint_x: 1
+                size_hint_y: 10
+                on_press: root.switch_content('Docker')
+
+        
+        BoxLayout:
+            id: content_layout
+            orientation: 'vertical'
+            size_hint_x: 0.7
+
+
+            
+            Label:
+                id: content_label

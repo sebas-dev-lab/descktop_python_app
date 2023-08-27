@@ -1,0 +1,163 @@
+<Label>:
+    multiline: False
+    size_hint_x: 0.3
+    size_hint_y: 0
+    color: 128, 128, 128, 128
+
+<ReversConnections>:
+    server_name: server_name
+    ip: ip
+    username: username
+    local_port: local_port
+    remote_port: remote_port
+    ssh_port: ssh_port
+    password: password
+    key: key
+
+
+    GridLayout:
+        cols:1
+        size: root.width, root.height
+        padding: 25, 25
+        spacing: 20 
+        row_default_height:30
+
+        Label:
+            text:root.title_content if root.title_content else 'AGREGAR NUEVA CONEXIÓN CON SERVIDOR'
+
+
+        GridLayout:
+            cols:2
+            padding: 20, 20
+            spacing: 10
+            row_default_height:30
+
+
+            Label:
+                text:'Nombre de Servidor: '
+               
+            
+            TextInput:
+                id: server_name
+                size_hint_x: 0.7
+                multiline:False
+
+
+            Label:
+                text:'IP: '
+               
+            
+            TextInput:
+                id: ip
+                size_hint_x: 0.7
+                multiline:False
+                
+            Label:
+                text:'Usuario: '
+
+            TextInput:
+                id: username
+                size_hint_x: 0.7
+                multiline: False
+
+            GridLayout:
+                cols:1
+                padding: 20, 20
+                row_default_height:30
+
+                Label:
+                    text: "¿Requiere password o key?"
+                    color: 1, 1, 1, 1
+                    size_hint_x:0.5
+                    width:20            
+
+            GridLayout:
+                cols:2
+                padding: 20, 20
+                row_force_default:True
+                row_default_height:30
+
+                Label:
+                    id: password 
+                    text: "Password"
+                    color: 1, 1, 1, 1
+                    size_hint_x:0.5
+                    width:20
+
+                Label:
+                    id: key 
+                    text: "Key"
+                    color: 1, 1, 1, 1
+                    size_hint_x:0.5
+                    width:20
+
+                CheckBox:
+                    active: root.with_password
+                    on_active: root.checkbox_click_password(self, self.active, "Password")
+                    color: 0.5, 0.5, 0.5, 1  # Cambiar el color del marcado
+                    size_hint_x:0.5
+                    width:20
+
+                CheckBox:
+                    active: root.with_key
+                    on_active: root.checkbox_click_key(self, self.active, "Key")
+                    color: 0.5, 0.5, 0.5, 1  # Cambiar el color del marcado
+                    size_hint_x:0.5
+                    width:20
+        
+
+
+            Label:
+                text:'Puerto Local: '
+
+            TextInput:
+                input_filter: 'int'            
+                id: local_port
+                size_hint_x: 0.7
+                multiline: False
+
+
+            Label:
+                text:'Puerto Remoto: '
+
+            TextInput:
+                input_filter: 'int'            
+                id: remote_port
+                size_hint_x: 0.7
+                multiline: False
+
+            Label:
+                text:'Puerto SSH: '
+
+            TextInput:
+                input_filter: 'int'
+                id: ssh_port
+                size_hint_x: 0.7
+                multiline: False
+
+
+            Label:
+                text:'Password: '
+            
+            
+            TextInput:
+                id: password
+                size_hint_x: 0.7
+                multiline:False           
+            
+            Label:
+                text:'key - Dirección de clave: '
+            
+            
+            TextInput:
+                id: key
+                size_hint_x: 0.7
+                multiline:False
+
+
+        Button:
+            text: root.text_submit_button if root.text_submit_button else ''
+            on_press: root.btn()
+            size_hint_x: 0.3
+            size_hint_y: None
+            pos_hint: {'center_x': 0.5, 'center_y': 0.5}
