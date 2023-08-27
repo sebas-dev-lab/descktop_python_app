@@ -44,6 +44,8 @@
 > **Bugs detectados:**
 >   - Al cerrar la aplicacion el hilo de ejecución (thread) iniciado en menú de Inicio, donde se ejecuta la escucha
 >   de eventos para reconstruir la vista, bloquea el cierre efectivo de la aplicación debiendo forzarlo.
+>   - Al editar una conexión y hacer click, se guarda en db pero no redirige a la pantalla de inicio o muestra 
+>   información de cambios.
 
 
 ### Instalación y Ejecución
@@ -102,3 +104,30 @@ bash install.sh DB_USER=Usuario  DB_PASSWORD=Contraseña DB_HOST=ip DB_PORT=puer
 bash run.sh
 </pre>
    
+
+### Evidencias de conexión
+
+> Ejecución pantalla de Inicio
+
+![Alt text](assets/image-1.png)
+
+> Pantalla Nuevas Conexiones => La pantalla de Editar es la misma, no se muestra para evitar mostrar datos.
+
+![Alt text](assets/image-2.png)
+
+> Al eliminar permite seleccionar Continuar o Cancelar
+
+![Alt text](assets/image-3.png)
+
+> Al hacer click en Activar se abre popup para decidir si ejecutar con terminal interactiva o segundo plano
+
+![Alt text](assets/image-4.png)
+
+> Al hacer clik en Terminal Se ejecuta el proceso, realiza la conexión y abre la terminal para interactuar
+>   con el mismo. A la vez se ve el cambio de estado debido a la verificación de puertos.
+
+![Alt text](assets/imgae.png)
+
+> Al hacer click en Segundo Plano se ejecuta el servicio y se muestra activo. 
+>
+> ![Alt text](assets/image_sgp.png)
